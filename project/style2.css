@@ -1,0 +1,54 @@
+ body {
+            font-family: 'Inter', sans-serif; /* Assuming Inter is a preferred font, fallback to sans-serif */
+        }
+        /* Custom scrollbar for a cleaner look (optional) */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c4b5fd; /* A soft accent color */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a78bfa;
+        }
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Chart container specific styling to meet requirements */
+        .chart-container-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 700px; /* Increased max-width slightly for better readability on larger screens */
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px; /* Base height */
+            max-height: 350px; /* Max height */
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            .chart-container-wrapper {
+                height: 350px;
+                max-height: 400px;
+            }
+        }
+        @media (min-width: 1024px) { /* lg breakpoint */
+            .chart-container-wrapper {
+                height: 400px;
+                max-height: 450px;
+            }
+        }
+        .active-nav {
+            background-color: #f59e0b; /* Amber 500 */
+            color: white;
+        }
+        .section-card {
+            background-color: white;
+            border-radius: 0.75rem; /* rounded-xl */
+            padding: 1.5rem; /* p-6 */
+            margin-bottom: 2rem; /* mb-8 */
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* shadow-lg */
+        }

@@ -10,7 +10,7 @@
     --br-1: 15px;
     --br-2: 50%;
 
-    --border-1: 1px solid rgba(128, 128, 128, 0.233);
+    --border-1: 1px solid rgba(128, 128, 128, 0.281);
     --bx-1: 1px 1px 15px 0 rgba(128, 128, 128, 0.205);
     --bx-2: 2px 2px 5px 0 rgba(128, 128, 128, 0.205);
 
@@ -41,7 +41,7 @@ body {
     font-weight: 400;
     font-style: normal;
 
-    font-size: var(--p-1);
+    font-size: 16px;
     background-color: var(--clr-light);
     color: var(--clr-dark);
     max-width: 1440px;
@@ -60,7 +60,8 @@ h1{
 
 /* DEFAULTS =============================*/
 .thin{
-    font-weight: 300;
+    font-weight: 400;
+    font-size: 24px;
 }
 
 .section-title{
@@ -93,7 +94,7 @@ section,
 footer{
     max-width: 1216px;
     min-width: 320px;
-    padding: 0.5rem 1.3rem;
+    /* padding: 0.5rem 1.3rem; */
     margin: 0 auto;
     margin-bottom: 2rem;
 }
@@ -115,9 +116,13 @@ nav{
     border-bottom: var(--border-1);
 
     min-width: 320px;
+    height: 56px;
     padding: 0.5rem 1.3rem;
     margin: 0 auto;
     margin-bottom: 2rem;
+
+    box-shadow: 0  1px 8px 0 rgba(128, 128, 128, 0.164);
+
 }
 
 .name{
@@ -128,8 +133,8 @@ nav{
 }
 
 .nav-icon{
-    height: 64px;
-    width: 64px;
+    height: 48px;
+    width: 48px;
     border-radius: 50%;
     overflow: hidden;
     border: 3px solid var(--clr-light);
@@ -138,10 +143,10 @@ nav{
 
 .available{
     color: var(--clr-green);
-    font-weight: 500;
+    font-weight: 600;
     padding: 5px 10px;
     border-radius: 15px;
-    border: 1px solid var(--clr-green);
+    /* border: 2px solid var(--clr-green); */
 }
 
 .home-btn{
@@ -184,16 +189,19 @@ nav{
 /* main ================  */
 main{
     margin-top: 100px;
-    /* margin-bottom: 100px; */
     display: flex;
     flex-direction: column;
     align-items: start;
 
 }
 
+h1{
+    line-height: 1;
+}
+
 main p{
     color: var(--clr-txt);
-    margin: 3rem 0;
+    margin: 1rem 0;
 }
 
 main .contact-container{
@@ -207,13 +215,29 @@ display:  none;
 main .contact-container .contact-item{
     height: 35px;
     width: 35px;
+    opacity: 0.9;
 }
 
+.read-more-btn{
+    font-size: 12px;
+    color: var(--clr-txt);
+}
+
+.read-more-btn:hover{
+    cursor: pointer;
+    color: #1e88e5;
+}
+
+.more-info{
+    display: none;
+}
 /* STOCK TICKER  */
 .stock-ticker{
     font-size: 15px;
+    font-weight: 600;
     padding-block: 8px;
-    border-block: 1px solid;
+    border-block: 2px solid;
+    border-color: #11212D;
     display: flex;
     gap: var(--gap);
     overflow: hidden;
@@ -254,32 +278,15 @@ main .contact-container .contact-item{
     border-radius: var(--br-1);
     gap: 0.5rem;
     padding: 1rem;
-    width: 289px;
-    height: 420px;
-}
-
-.project:nth-of-type(1){
-    border-top: 4px solid #ff595e;
-}
-.project:nth-of-type(2){
-    border-top: 4px solid #ffca3a;
-}
-.project:nth-of-type(3){
-    border-top: 4px solid #8ac926;
-}
-.project:nth-of-type(4){
-    border-top: 4px solid #1982c4;
-}
-.project:nth-of-type(5){
-    border-top: 4px solid #6a4c93;
-}
-.project:nth-of-type(6){
-    border-top: 4px solid #ff595e;
+    width: 309px;
+    height: 450px;
+    background-color: #ffffff70;
 }
 
 .project:hover{
     transform: scale(1.005);
     box-shadow: var(--bx-1);
+    background-color: #fff;
 }
 
 .p-img{
@@ -289,6 +296,10 @@ main .contact-container .contact-item{
     border: 10px solid var(--clr-light);
     box-shadow: var(--bx-1);
     overflow: hidden;
+}
+
+.project-title{
+    color: ;
 }
 
 .project p{
@@ -348,6 +359,7 @@ main .contact-container .contact-item{
     border: var(--border-1);
     box-shadow: var(--bx-2);
     transform: translate(2px);
+    background-color: #ffffff;
 }
 .link-img{
     display: inline-block;

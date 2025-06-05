@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Market Analysis | Portfolio Project</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Visualization & Content Choices:
+        - Overview/Approach/Skills/Tech/Links: Static text sections. Goal: Inform. Method: HTML paragraphs, lists.
+        - SQL Showcase: Static code blocks. Goal: Demonstrate technical skill. Method: HTML <pre><code>.
+        - Insight 1 (Regional Price Dynamics): Chart.js Bar Chart (Avg Price/SqFt by Neighborhood) & Line Chart (Overall Market Price Trend). Goal: Show trends & geographic distribution. Interaction: Hover tooltips on chart.
+        - Insight 2 (Feature Impact): Chart.js Scatter Plot (Price vs. Area) & Bar Chart (Amenity Impact). Goal: Show relationships & comparisons. Interaction: Tooltips.
+        - Insight 3 (Market Volume & Seasonality): Chart.js Line Chart (Sales Volume & Days on Market). Goal: Show change over time. Interaction: Tooltips.
+        - Insight 4 (Investment Opportunities): Chart.js Bar Chart (Appreciation by Property Type). Goal: Compare. Interaction: Tooltips.
+        All charts will use Chart.js (Canvas). NO SVG/Mermaid. Justification: Best way to represent the described data stories interactively within constraints. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style2.css">
+</head>
+
+<body class="bg-stone-100 text-stone-800">
+    <div class="flex flex-col md:flex-row min-h-screen">
+        <nav
+            class="md:w-64 bg-stone-800 text-white p-4 md:p-6 space-y-2 md:sticky md:top-0 md:h-screen overflow-y-auto">
+            <h1 class="text-2xl font-bold text-amber-400 mb-6 border-b border-stone-700 pb-3">Project Navigation</h1>
+            <a href="#overview"
+                class="block py-2.5 px-4 rounded-lg hover:bg-amber-500 hover:text-white transition duration-200 nav-link">Overview</a>
+            <a href="#approach"
+                class="block py-2.5 px-4 rounded-lg hover:bg-amber-500 hover:text-white transition duration-200 nav-link">Approach</a>
+            <a href="#skills"
+                class="block py-2.5 px-4 rounded-lg hover:bg-amber-500 hover:text-white transition duration-200 nav-link">Technical
+                Skills</a>
+            <a href="#sql-showcase"
+                class="block py-2.5 px-4 rounded-lg hover:bg-amber-500 hover:text-white transition duration-200 nav-link">SQL
+                Showcase</a>
+            <a href="#insights"
+                class="block py-2.5 px-4 rounded-lg hover:bg-amber-500 hover:text-white transition duration-200 nav-link">Key
+                Insights</a>
+            <a href="#technologies"
+                class="block py-2.5 px-4 rounded-lg hover:bg-amber-500 hover:text-white transition duration-200 nav-link">Technologies</a>
+            <a href="#future"
+                class="block py-2.5 px-4 rounded-lg hover:bg-amber-500 hover:text-white transition duration-200 nav-link">Future
+                Enhancements</a>
+            <a href="#links"
+                class="block py-2.5 px-4 rounded-lg hover:bg-amber-500 hover:text-white transition duration-200 nav-link">Project
+                Links</a>
+        </nav>
+
+        <main class="flex-1 p-6 md:p-10 overflow-y-auto">
+            <header class="mb-10 text-center md:text-left">
+                <h1 class="text-4xl font-bold text-amber-600">Unlocking Value: A Data-Driven Analysis of the
+                    [City/Region] Real Estate Market</h1>
+            </header>
+
+            <section id="overview" class="section-card">
+                <h2 class="text-2xl font-semibold text-stone-700 mb-4">1. Executive Summary & Project Overview</h2>
+                <p class="text-stone-600 leading-relaxed">
+                    This project delves into a vast real estate dataset, comprising over 1 million property transactions
+                    in [Specify City/Region, e.g., "Greater Seattle Area"], to uncover critical market trends, identify
+                    key pricing determinants, and highlight potential investment opportunities. Leveraging advanced SQL
+                    techniques, I meticulously cleaned, transformed, and analyzed the raw data. The derived insights
+                    were then powerfully communicated through interactive dashboards in Tableau (represented here with
+                    Chart.js examples), demonstrating a complete data analysis pipeline from raw data to actionable
+                    business intelligence.
+                </p>
+            </section>
+
+            <section id="approach" class="section-card">
+                <h2 class="text-2xl font-semibold text-stone-700 mb-4">2. The Challenge & My Approach</h2>
+                <h3 class="text-xl font-medium text-stone-600 mb-2">The Challenge:</h3>
+                <p class="text-stone-600 leading-relaxed mb-4">
+                    Raw real estate transaction data is often messy, incomplete, and inconsistent, making direct
+                    analysis difficult. Furthermore, processing and extracting meaningful insights from a dataset of
+                    over 1 million rows presents significant challenges in terms of data management, performance, and
+                    analytical rigor. The goal was to transform this raw data into a reliable source for strategic
+                    decision-making.
+                </p>
+                <h3 class="text-xl font-medium text-stone-600 mb-2">My Approach:</h3>
+                <ol class="list-decimal list-inside text-stone-600 leading-relaxed space-y-2">
+                    <li><strong>Data Acquisition & Initial Profiling:</strong> Obtained a comprehensive dataset of real
+                        estate transactions from [mention source, e.g., "a public data repository" or "a simulated
+                        dataset"]. Performed initial data profiling to understand its structure, identify data quality
+                        issues, and assess missingness.</li>
+                    <li><strong>Robust SQL Data Cleaning & Wrangling:</strong> Developed and executed a series of
+                        complex SQL scripts to:
+                        <ul class="list-disc list-inside ml-6 mt-1 space-y-1">
+                            <li>Handle Duplicates</li>
+                            <li>Standardize & Clean text entries</li>
+                            <li>Manage Missing Values</li>
+                            <li>Standardize Formats</li>
+                            <li>Derive New Features (e.g., PricePerSquareFoot, PropertyAgeAtSale)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Exploratory Data Analysis (EDA) with SQL:</strong> Utilized SQL queries to perform
+                        aggregate analysis, identify distributions, detect outliers, and understand relationships
+                        between variables.</li>
+                    <li><strong>Database Design & Optimization:</strong> (If applicable) Designed a structured database
+                        schema to store the cleaned and transformed data efficiently.</li>
+                    <li><strong>Data Visualization & Storytelling with Tableau (Chart.js examples here):</strong>
+                        Created interactive dashboards to visually present key findings.</li>
+                </ol>
+            </section>
+
+            <section id="skills" class="section-card">
+                <h2 class="text-2xl font-semibold text-stone-700 mb-4">3. Key Technical Skills Demonstrated</h2>
+                <ul class="list-disc list-inside text-stone-600 leading-relaxed space-y-2">
+                    <li><strong>SQL (Advanced):</strong>
+                        <ul class="list-circle list-inside ml-6 mt-1 space-y-1">
+                            <li>Common Table Expressions (CTEs)</li>
+                            <li>Window Functions (ROW_NUMBER(), RANK(), LAG(), LEAD(), AVG() OVER PARTITION BY)</li>
+                            <li>Complex JOIN Operations</li>
+                            <li>CASE Statements</li>
+                            <li>Aggregate Functions & GROUP BY</li>
+                            <li>String & Date Functions</li>
+                            <li>Performance Optimization</li>
+                        </ul>
+                    </li>
+                    <li><strong>Database Management:</strong> Schema design principles, data integrity, handling
+                        large-scale data.</li>
+                    <li><strong>Data Wrangling & Cleaning:</strong> Systematic approach to resolving data quality
+                        issues.</li>
+                    <li><strong>Exploratory Data Analysis (EDA):</strong> Extracting patterns and outliers using SQL.
+                    </li>
+                    <li><strong>Data Visualization:</strong> Proficient in Tableau (represented by Chart.js), creating
+                        insightful dashboards.</li>
+                    <li><strong>Storytelling with Data:</strong> Translating findings into actionable insights.</li>
+                </ul>
+            </section>
+
+            <section id="sql-showcase" class="section-card">
+                <h2 class="text-2xl font-semibold text-stone-700 mb-4">4. SQL Showcase: Data Cleaning & Feature
+                    Engineering Examples</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-lg font-medium text-stone-600 mb-2">Example 1: Handling Duplicate Records</h3>
+                        <pre class="bg-stone-900 text-stone-200 p-4 rounded-lg overflow-x-auto text-sm"><code class="language-sql">
+-- Identify potential duplicate sales based on address, sale date, and price
+WITH RankedSales AS (
+    SELECT
+        SaleID,
+        PropertyAddress,
+        SaleDate,
+        SalePrice,
+        ROW_NUMBER() OVER (PARTITION BY PropertyAddress, SaleDate, SalePrice ORDER BY SaleID) as rn
+    FROM
+        RawRealEstateTransactions
+)
+SELECT
+    SaleID,
+    PropertyAddress,
+    SaleDate,
+    SalePrice
+FROM
+    RankedSales
+WHERE
+    rn > 1;
+
+-- To remove duplicates, you might use a DELETE JOIN or a CTE with DELETE
+-- DELETE FROM RawRealEstateTransactions
+-- WHERE SaleID IN (SELECT SaleID FROM RankedSales WHERE rn > 1);
+                        </code></pre>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-stone-600 mb-2">Example 2: Feature Engineering - Calculating
+                            Price Per Square Foot Safely</h3>
+                        <pre class="bg-stone-900 text-stone-200 p-4 rounded-lg overflow-x-auto text-sm"><code class="language-sql">
+-- Calculate PricePerSqFt, handling cases where LivingAreaSqFt might be zero or null
+SELECT
+    PropertyID,
+    SalePrice,
+    LivingAreaSqFt,
+    CASE
+        WHEN LivingAreaSqFt IS NOT NULL AND LivingAreaSqFt > 0
+        THEN CAST(SalePrice AS DECIMAL(18, 2)) / LivingAreaSqFt
+        ELSE 0.00 -- Assign 0 or NULL for invalid living areas, depending on requirement
+    END AS PricePerSqFt
+FROM
+    CleanedRealEstateData;
+                        </code></pre>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-stone-600 mb-2">Example 3: Standardizing Property Types and
+                            Handling Missing Values</h3>
+                        <pre class="bg-stone-900 text-stone-200 p-4 rounded-lg overflow-x-auto text-sm"><code class="language-sql">
+-- Standardize various property type entries and fill missing values
+UPDATE CleanedRealEstateData
+SET PropertyType =
+    CASE
+        WHEN PropertyType IS NULL OR TRIM(PropertyType) = '' THEN 'Unknown'
+        WHEN PropertyType LIKE '%Single Family%' OR PropertyType LIKE '%SFH%' THEN 'Single Family Home'
+        WHEN PropertyType LIKE '%Condo%' OR PropertyType LIKE '%Cndo%' THEN 'Condominium'
+        WHEN PropertyType LIKE '%Multi-Family%' OR PropertyType LIKE '%MFA%' THEN 'Multi-Family Dwelling'
+        WHEN PropertyType LIKE '%Townhouse%' THEN 'Townhouse'
+        ELSE 'Other Residential' -- Categorize any remaining types
+    END;
+                        </code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="insights" class="section-card">
+                <h2 class="text-2xl font-semibold text-stone-700 mb-6">5. Key Insights & Visualizations (Chart.js
+                    Examples)</h2>
+                <p class="text-stone-600 leading-relaxed mb-6">
+                    The following interactive charts represent key findings from the real estate data analysis. These
+                    visualizations are created using Chart.js to demonstrate the types of insights derived, similar to
+                    what would be presented in a Tableau dashboard.
+                </p>
+
+                <div class="mb-10 p-4 border border-stone-200 rounded-lg bg-stone-50">
+                    <h3 class="text-xl font-medium text-stone-700 mb-3">Insight 1: Regional Price Dynamics & Growth
+                        Trajectories</h3>
+                    <p class="text-sm text-stone-500 mb-4">This section illustrates how property values vary across
+                        different neighborhoods and how the overall market has trended over time. Understanding these
+                        dynamics is crucial for identifying both high-value areas and regions with strong growth
+                        potential.</p>
+                    <div class="grid md:grid-cols-2 gap-6 mb-4">
+                        <div class="chart-container-wrapper">
+                            <canvas id="regionalPriceChart"></canvas>
+                        </div>
+                        <div class="chart-container-wrapper">
+                            <canvas id="marketTrendChart"></canvas>
+                        </div>
+                    </div>
+                    <p class="text-stone-600 leading-relaxed mt-2 bg-amber-100 p-3 rounded-md text-sm">
+                        <strong>Key Takeaway:</strong> Identified that affluent neighborhoods like 'Neighborhood A'
+                        consistently maintain the highest average price per square foot ($750), while emerging areas
+                        such as 'Neighborhood C' show the most significant year-over-year price appreciation (15%),
+                        indicating growth potential. The overall market shows a steady upward trend over the past 5
+                        years.
+                    </p>
+                </div>
+
+                <div class="mb-10 p-4 border border-stone-200 rounded-lg bg-stone-50">
+                    <h3 class="text-xl font-medium text-stone-700 mb-3">Insight 2: Property Feature Impact on Sale Price
+                    </h3>
+                    <p class="text-sm text-stone-500 mb-4">Here, we explore how specific property characteristics, such
+                        as size, number of bedrooms/bathrooms, and amenities, influence sale prices. This helps in
+                        understanding valuation drivers.</p>
+                    <div class="grid md:grid-cols-2 gap-6 mb-4">
+                        <div class="chart-container-wrapper">
+                            <canvas id="priceVsAreaChart"></canvas>
+                        </div>
+                        <div class="chart-container-wrapper">
+                            <canvas id="amenityImpactChart"></canvas>
+                        </div>
+                    </div>
+                    <p class="text-stone-600 leading-relaxed mt-2 bg-amber-100 p-3 rounded-md text-sm">
+                        <strong>Key Takeaway:</strong> Analysis revealed a strong positive correlation between living
+                        area and sale price. Properties with 3+ bathrooms command an average premium of $50,000, and the
+                        presence of a 'Renovated Kitchen' adds an estimated 8% to the sale price.
+                    </p>
+                </div>
+
+                <div class="mb-10 p-4 border border-stone-200 rounded-lg bg-stone-50">
+                    <h3 class="text-xl font-medium text-stone-700 mb-3">Insight 3: Market Volume & Seasonality</h3>
+                    <p class="text-sm text-stone-500 mb-4">This visualization tracks the number of sales and average
+                        time on market, revealing seasonal patterns and overall market activity levels.</p>
+                    <div class="chart-container-wrapper mb-4">
+                        <canvas id="marketVolumeChart"></canvas>
+                    </div>
+                    <p class="text-stone-600 leading-relaxed mt-2 bg-amber-100 p-3 rounded-md text-sm">
+                        <strong>Key Takeaway:</strong> The market experiences peak sales volume during the Spring/Summer
+                        months (May-July), with average 'Days on Market' dropping to a low of 25 days during this
+                        period, indicating increased buyer competition.
+                    </p>
+                </div>
+
+                <div class="p-4 border border-stone-200 rounded-lg bg-stone-50">
+                    <h3 class="text-xl font-medium text-stone-700 mb-3">Insight 4: Investment Opportunities by Property
+                        Type</h3>
+                    <p class="text-sm text-stone-500 mb-4">Comparing different property types based on their price
+                        appreciation or potential rental yields can highlight attractive investment avenues.</p>
+                    <div class="chart-container-wrapper mb-4">
+                        <canvas id="investmentOpportunityChart"></canvas>
+                    </div>
+                    <p class="text-stone-600 leading-relaxed mt-2 bg-amber-100 p-3 rounded-md text-sm">
+                        <strong>Key Takeaway:</strong> While single-family homes dominate market volume, multi-family
+                        dwellings in 'Urban Core Areas' show the highest average price appreciation of 12% YoY,
+                        presenting a compelling opportunity for growth-focused investors.
+                    </p>
+                </div>
+            </section>
+
+            <section id="technologies" class="section-card">
+                <h2 class="text-2xl font-semibold text-stone-700 mb-4">6. Technologies Used</h2>
+                <ul class="list-disc list-inside text-stone-600 leading-relaxed space-y-2">
+                    <li><strong>Database:</strong> PostgreSQL (Example: Could be SQL Server, MySQL)</li>
+                    <li><strong>Querying & Data Manipulation:</strong> SQL</li>
+                    <li><strong>Visualization:</strong> Tableau Desktop / Tableau Public (Represented by Chart.js)</li>
+                    <li><strong>(Optional) Data Profiling/Initial Exploration:</strong> Python (Pandas)</li>
+                    <li><strong>Version Control:</strong> Git / GitHub</li>
+                    <li><strong>Frontend:</strong> HTML, Tailwind CSS, JavaScript</li>
+                </ul>
+            </section>
+
+            <section id="future" class="section-card">
+                <h2 class="text-2xl font-semibold text-stone-700 mb-4">7. Future Enhancements & Next Steps</h2>
+                <ul class="list-disc list-inside text-stone-600 leading-relaxed space-y-2">
+                    <li>Integrate external datasets (demographics, school ratings, crime rates) for richer analysis.
+                    </li>
+                    <li>Develop a machine learning model (e.g., Regression) to predict property prices.</li>
+                    <li>Build a more dynamic web application to host interactive dashboards.</li>
+                    <li>Explore time-series forecasting for future market trends.</li>
+                </ul>
+            </section>
+
+            <section id="links" class="section-card">
+                <h2 class="text-2xl font-semibold text-stone-700 mb-4">8. Project Links</h2>
+                <div class="space-y-3">
+                    <p class="text-stone-600">
+                        <a href="#" class="text-amber-600 hover:text-amber-700 hover:underline font-medium">View
+                            Interactive Dashboards on Tableau Public: [Link to your Tableau Public Dashboard]</a>
+                    </p>
+                    <p class="text-stone-600">
+                        <a href="#" class="text-amber-600 hover:text-amber-700 hover:underline font-medium">Explore the
+                            Full SQL Codebase on GitHub: [Link to your GitHub Repository]</a>
+                    </p>
+                </div>
+            </section>
+
+            <footer class="mt-12 text-center text-sm text-stone-500">
+                <p>&copy; <span id="currentYear"></span> [Your Name] - Real Estate Market Analysis Portfolio Project</p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="exampleJS.js"></script>
+</body>
+
+</html>
