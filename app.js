@@ -1,12 +1,14 @@
 const readMoreBtn = document.querySelector(".read-more-btn");
 const moreInfo = document.querySelector(".more-info");
 
-readMoreBtn.addEventListener("click", () => {
+function handleClick(event) {
+  event.preventDefault();
   if (moreInfo.style.display === "none") {
     moreInfo.style.display = "block";
   } else {
     moreInfo.style.display = "none";
   }
-});
+}
 
-console.log("PS: Torchic is best starter Pokemon.");
+readMoreBtn.addEventListener("click", handleClick);
+readMoreBtn.addEventListener("touchstart", handleClick);
